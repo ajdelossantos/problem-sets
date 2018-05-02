@@ -1,8 +1,4 @@
 const doTwoMovieLengthsEqualFlightLength = function (flightLength, movieLengths) {
-
-  // initialize default result
-  let doesMovieLengthComplementsExist = false;
-
   // initialize hash table to store info about each movie length
   let movieLengthsHash = {};
 
@@ -13,7 +9,7 @@ const doTwoMovieLengthsEqualFlightLength = function (flightLength, movieLengths)
 
     // Check if hash already contains a movieLength's complement at some other index
     if (movieLengthsHash[movieLengthComplement] && idx !== movieLengthsHash[movieLengthComplement][0]) {
-      doesMovieLengthComplementsExist = true;
+      return true;
     }
 
     let metaData = [];
@@ -26,7 +22,7 @@ const doTwoMovieLengthsEqualFlightLength = function (flightLength, movieLengths)
     movieLengthsHash[movieLength] = metaData;
   };
 
-  return doesMovieLengthComplementsExist;
+  return false;
 }
 
 module.exports = doTwoMovieLengthsEqualFlightLength;
