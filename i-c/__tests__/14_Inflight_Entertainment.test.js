@@ -5,8 +5,6 @@ describe('14 - Inflght Entertainment', () => {
   let flightLength;
   let movieLengths;
 
-
-
   test('returns a boolean value', () => {
     flightLength = 60;
     movieLengths = [20, 40];
