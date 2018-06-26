@@ -1,0 +1,20 @@
+{
+  "name": "misc-whiteboard-problems",
+  "version": "1.0.0",
+  "description": "Miscellaneous whiteboard problems for review",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "data-structures",
+    "algorithms",
+    "whiteboard",
+    "interview"
+  ],
+  "author": "Alvin James Delos Santos",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "jest": "^23.2.0"
+  }
+}
