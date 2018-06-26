@@ -21,7 +21,7 @@ const mergeRanges = meetings => {
   // Iterate through
   sortedMeetings.forEach((meeting, index) => {
     const currentMeeting = sortedMeetings[index];
-    const lastMergedMeeting = result[result.length - 1]
+    const lastMergedMeeting = result[result.length - 1];
     
     // Account for edge cases
     if (currentMeeting.startTime <= lastMergedMeeting.endTime) {

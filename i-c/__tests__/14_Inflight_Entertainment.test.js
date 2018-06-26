@@ -8,7 +8,7 @@ describe('14 - Inflght Entertainment', () => {
   test('returns a boolean value', () => {
     flightLength = 60;
     movieLengths = [20, 40];
-    
+
     expect(typeof doTwoMovieLengthsEqualFlightLength(flightLength, movieLengths)).toBe('boolean');
   });
 
@@ -26,7 +26,7 @@ describe('14 - Inflght Entertainment', () => {
     expect(doTwoMovieLengthsEqualFlightLength(flightLength, movieLengths)).toBe(false)
   })
 
-  test ('returns false if the only complementary movieLength is itself', () => {
+  test('returns false if the only complementary movieLength is itself', () => {
     flightLength = 60;
     movieLengths = [30, 20, 20, 20, 60];
 
@@ -34,3 +34,5 @@ describe('14 - Inflght Entertainment', () => {
   })
 
 });
+
+module.exports = TreeNode;

@@ -1,4 +1,5 @@
-const TreeNode = require('../classes/tree.node');
+// Uses a TreeNode class in /scripts
+// const TreeNode = require('../classes/tree.node');
 
 const isBinaryTreeSymmetric = function (rootNode) {
   if (rootNode.value === null) return true;
@@ -12,7 +13,6 @@ function areNodeSiblingsEqual(leftChild, rightChild) {
   if (leftChild === undefined ^ rightChild === undefined) return false; // ^ => XOR
 
   const areSiblingValuesEqual = leftChild.value === rightChild.value;
-
   const recursiveSiblingsEqual = areNodeSiblingsEqual(leftChild.left, rightChild.right) && areNodeSiblingsEqual(rightChild.left, leftChild.right);
 
   return areSiblingValuesEqual && recursiveSiblingsEqual;
