@@ -9,8 +9,8 @@ const isBinaryTreeSymmetric = function (rootNode) {
 };
 
 function areNodeSiblingsEqual(leftChild, rightChild) {
-  if (leftChild === undefined && rightChild === undefined) return true;
-  if (leftChild === undefined ^ rightChild === undefined) return false; // ^ => XOR
+  if (leftChild === null && rightChild === null) return true;
+  if (leftChild === null ^ rightChild === null) return false; // ^ => XOR
 
   const areSiblingValuesEqual = leftChild.value === rightChild.value;
   const recursiveSiblingsEqual = areNodeSiblingsEqual(leftChild.left, rightChild.right) && areNodeSiblingsEqual(rightChild.left, leftChild.right);

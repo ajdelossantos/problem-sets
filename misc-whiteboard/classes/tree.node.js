@@ -4,7 +4,7 @@ function TreeNode(value) {
   this.right = null;
 }
 
-TreeNode.prototype.tostring = function () {
+TreeNode.prototype.toString = function () {
   `{ val: ${this.value}, left: ${this.left}, right: ${this.right} }`
 }
 

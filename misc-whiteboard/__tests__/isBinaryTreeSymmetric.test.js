@@ -3,25 +3,16 @@ const TreeNode = require('../classes/tree.node');
 
 describe('Symmetric Binary Tree', () => {
 
-  const nullTree = new TreeNode(null);
-  const soloTree = new TreeNode(42)
-
   /* 
   testTree1
             5
-           7 7
-          9   9
+           / \
+          7   7
+         /     \
+        9       9
   */
 
-  /* 
-
-  testTree2
-             5
-           7   7
-          9 * 9 *
-  */
-
-  const testTree1 = () => {
+  function generateTestTree1() {
     const testTree1 = new TreeNode(5);
 
     const leftNode = new TreeNode(7);
@@ -37,7 +28,16 @@ describe('Symmetric Binary Tree', () => {
     return testTree1;
   }
 
-  const testTree2 = () => {
+  /* 
+  testTree2
+            5
+           / \
+          7   7
+         /   /
+        9   9
+  */
+
+  function generateTestTree2() {
     const testTree2 = new TreeNode(5);
 
     const leftNode = new TreeNode(7);
@@ -53,9 +53,10 @@ describe('Symmetric Binary Tree', () => {
     return testTree2;
   }
 
-  console.log(testTree1);
-  console.log(testTree2);
-
+  const nullTree = new TreeNode(null);
+  const soloTree = new TreeNode(42)
+  const testTree1 = generateTestTree1();
+  const testTree2 = generateTestTree2();
 
   test('returns a boolean value', () => {
     expect(typeof isBinaryTreeSymmetric(testTree1)).toBe('boolean');
@@ -66,7 +67,7 @@ describe('Symmetric Binary Tree', () => {
   });
 
   test('returns false for a non-symmetric binary tree', () => {
-    expect(isBinaryTreeSymmetric(testTree2)).toBe(true);
+    expect(isBinaryTreeSymmetric(testTree2)).toBe(false);
   });
 
   test('returns true for a null binary tree', () => {
@@ -76,5 +77,4 @@ describe('Symmetric Binary Tree', () => {
   test('returns true for a single node', () => {
     expect(isBinaryTreeSymmetric(soloTree)).toBe(true);
   });
-
 })
