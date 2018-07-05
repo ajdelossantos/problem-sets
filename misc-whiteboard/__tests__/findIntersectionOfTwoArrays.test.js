@@ -38,7 +38,7 @@ describe('findIntersectionOfTwoArrays', () => {
 
   test('returns a string', () => {
     arrayOne = [4, 6, 0, 13];
-    arrayTwo = [12, 4, 42, 5, 1, 3, 13, 7];
+    arrayTwo = [12, 13, 42, 5, 1, 3, 4, 7];
 
     expect(typeof findIntersectionOfTwoArrays(arrayOne, arrayTwo)).toBe('string');
   });
@@ -68,15 +68,15 @@ describe('findIntersectionOfTwoArrays', () => {
     // Maybe not the best way to test this
     // Runtime must be less than 5 seconds
     test('runs in O(mLogm + nLogn) for large datasets', () => {
-      arrayOne = [4, 6, 0, 1001];
+      arrayOne = [4, 6, 0, 100001];
 
-      for (let i = 0; i < 1000; i++) {
+      for (let i = 0; i < 100000; i++) {
         arrayTwo.push(i);
       }
 
       shuffle(arrayTwo);
 
-      const NS_PER_SEC = 1e9
+      const NS_PER_SEC = 1e9;
       const time = process.hrtime();
       findIntersectionOfTwoArrays(arrayOne, arrayTwo);
       const diff = process.hrtime(time);
@@ -88,7 +88,7 @@ describe('findIntersectionOfTwoArrays', () => {
 
       console.log(`Benchmark took ${runtimeInMilliseconds} ms`);
 
-      expect(runtimeInMilliseconds).toBeLessThan(5000);
+      expect(runtimeInMilliseconds).toBeLessThan(1000);
     });
   });
 });
