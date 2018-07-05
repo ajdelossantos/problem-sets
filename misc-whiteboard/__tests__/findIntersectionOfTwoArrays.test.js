@@ -1,21 +1,31 @@
 const findIntersectionOfTwoArrays = require('../scripts/findIntersectionOfTwoArrays');
 
 // Shuffles an array in place. Fisher-Yates method
-Array.protoype.shuffle = function () {
-  let counter = this.length;
+function shuffle(array) {
+  let counter = array.length;
 
   while (counter > 0) {
     let index = Math.floor(Math.random() * counter);
     counter--;
 
-    let temp = this[counter];
-    this[counter] = this[index];
-    this[index] = temp;
+    let temp = array[counter];
+    array[counter] = array[index];
+    array[index] = temp;
   }
 
-  return this;
-}
+  return array;
+};
 
+// Removes in-place
+function removeRandomArrayElements(array, numberOfElementsToRemove = 1) {
+  for (let i = 0; i < numberOfElementsToRemove; i++) {
+    let index = Math.floor(Math.random() * (array.length - 1));
+
+    array.splice(index, 1);
+  };
+
+  return array;
+};
 
 describe('findIntersectionOfTwoArrays', () => {
   let arrayOne;
@@ -64,13 +74,14 @@ describe('findIntersectionOfTwoArrays', () => {
         arrayTwo.push(i);
       }
 
-      arrayTwo.shuffle();
-      console.log(arrayTwo);
+      shuffle(arrayTwo);
 
       const NS_PER_SEC = 1e9
       const time = process.hrtime();
       findIntersectionOfTwoArrays(arrayOne, arrayTwo);
       const diff = process.hrtime(time);
+
+      removeRandomArrayElements(arrayTwo, 10);
 
       const runtime = diff[0] * NS_PER_SEC + diff[1];
       const runtimeInMilliseconds = runtime * .000001
