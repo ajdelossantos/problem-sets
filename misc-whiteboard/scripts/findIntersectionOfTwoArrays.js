@@ -8,6 +8,7 @@ const findIntersectionOfTwoArrays = (array1, array2) => {
     Runtime: O min((m+n)Logm, (m+n)Logn)
   */
 
+
   array1 = array1.sort((a, b) => a < b ? -1 : 1);
   array2 = array2.sort((a, b) => a < b ? -1 : 1);
 
@@ -26,6 +27,26 @@ const findIntersectionOfTwoArrays = (array1, array2) => {
   });
 
   return result.join(' ');
+
+
+  /*
+  Naive version!
+
+  let result = [];
+
+  array1.forEach(el1 => {
+    array2.forEach(el2 => {
+      if (el1 === el2) {
+        result.push(el1);
+      };
+    });
+  });
+
+  result = new Set(result.sort((a, b) => a < b ? -1 : 1));
+
+  return Array.from(result).join(' ');
+  */
+
 }
 
 function binaryIndexOf(searchValue) {
