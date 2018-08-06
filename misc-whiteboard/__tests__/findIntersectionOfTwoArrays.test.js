@@ -14,7 +14,7 @@ function shuffle(array) {
   }
 
   return array;
-};
+}
 
 // Removes in-place
 function removeRandomArrayElements(array, numberOfElementsToRemove = 1) {
@@ -22,10 +22,10 @@ function removeRandomArrayElements(array, numberOfElementsToRemove = 1) {
     let index = Math.floor(Math.random() * (array.length - 1));
 
     array.splice(index, 1);
-  };
+  }
 
   return array;
-};
+}
 
 describe('findIntersectionOfTwoArrays', () => {
   let arrayOne;
@@ -40,7 +40,9 @@ describe('findIntersectionOfTwoArrays', () => {
     arrayOne = [4, 6, 0, 13];
     arrayTwo = [12, 13, 42, 5, 1, 3, 4, 7];
 
-    expect(typeof findIntersectionOfTwoArrays(arrayOne, arrayTwo)).toBe('string');
+    expect(typeof findIntersectionOfTwoArrays(arrayOne, arrayTwo)).toBe(
+      'string'
+    );
   });
 
   test('returns a string of sorted integers', () => {
@@ -61,7 +63,7 @@ describe('findIntersectionOfTwoArrays', () => {
     arrayOne = [1, 1, 1, 1, 1, 1, 0];
     arrayTwo = [1, 0, 0];
 
-    expect(findIntersectionOfTwoArrays(arrayOne, arrayTwo)).toBe('0 1')
+    expect(findIntersectionOfTwoArrays(arrayOne, arrayTwo)).toBe('0 1');
   });
 
   // Does not work as intended
@@ -71,7 +73,7 @@ describe('findIntersectionOfTwoArrays', () => {
     test('runs in O(mLogm + nLogn) for large datasets', () => {
       arrayOne = [4, 6, 999999, 0, 100001];
 
-      for (let i = 0; i < 1000000; i++) {
+      for (let i = 0; i < 10000000; i++) {
         arrayTwo.push(i);
       }
 
@@ -85,7 +87,7 @@ describe('findIntersectionOfTwoArrays', () => {
       removeRandomArrayElements(arrayTwo, 10);
 
       const runtime = diff[0] * NS_PER_SEC + diff[1];
-      const runtimeInMilliseconds = runtime * .000001
+      const runtimeInMilliseconds = runtime * 0.000001;
 
       console.log(`Benchmark took ${runtimeInMilliseconds} ms`);
 

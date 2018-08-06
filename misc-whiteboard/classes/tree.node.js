@@ -4,8 +4,8 @@ function TreeNode(value) {
   this.right = null;
 }
 
-TreeNode.prototype.toString = function () {
-  `{ val: ${this.value}, left: ${this.left}, right: ${this.right} }`
-}
+TreeNode.prototype.toString = function() {
+  `{ val: ${this.value}, left: ${this.left}, right: ${this.right} }`;
+};
 
 module.exports = TreeNode;

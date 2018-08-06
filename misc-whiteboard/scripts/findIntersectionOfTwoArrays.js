@@ -8,9 +8,8 @@ const findIntersectionOfTwoArrays = (array1, array2) => {
     Runtime: O min((m+n)Logm, (m+n)Logn)
   */
 
-
-  array1 = array1.sort((a, b) => a < b ? -1 : 1);
-  array2 = array2.sort((a, b) => a < b ? -1 : 1);
+  array1 = array1.sort((a, b) => (a < b ? -1 : 1));
+  array2 = array2.sort((a, b) => (a < b ? -1 : 1));
 
   let smallerArray = array1.length <= array2.length ? array1 : array2;
   let biggerArray = array1.length > array2.length ? array1 : array2;
@@ -27,7 +26,6 @@ const findIntersectionOfTwoArrays = (array1, array2) => {
   });
 
   return result.join(' ');
-
 
   /*
   Naive version!
@@ -46,12 +44,10 @@ const findIntersectionOfTwoArrays = (array1, array2) => {
 
   return Array.from(result).join(' ');
   */
-
-}
+};
 
 function binaryIndexOf(searchValue) {
-
-  let minIndex = 0
+  let minIndex = 0;
   let maxIndex = this.length - 1;
   let currentIndex;
   let currentValue;
@@ -67,9 +63,9 @@ function binaryIndexOf(searchValue) {
     } else {
       return currentIndex;
     }
-  };
+  }
 
   return -1;
-};
+}
 
 module.exports = findIntersectionOfTwoArrays;
