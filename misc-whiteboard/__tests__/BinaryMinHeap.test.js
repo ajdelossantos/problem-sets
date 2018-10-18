@@ -14,7 +14,12 @@ describe('BinaryMinHeap', () => {
       expect(BinaryMinHeap.parentIndex(3)).toEqual(1);
       expect(BinaryMinHeap.parentIndex(2)).toEqual(0);
       expect(BinaryMinHeap.parentIndex(1)).toEqual(0);
-      expect(BinaryMinHeap.parentIndex()).toThrowError('root has no parent');
+
+      function parentIndexOfZero() {
+        BinaryMinHeap.parentIndex(0);
+      }
+
+      expect(parentIndexOfZero).toThrowError('root has no parent');
     });
   });
 
@@ -42,10 +47,10 @@ describe('BinaryMinHeap', () => {
     });
 
     // Callback function passed to heapify turns MinHeap into MaxHeap
-    const toMaxHeap = (el1, el2) => {
-      if (el1 < el2) {
+    const toMaxHeap = (x, y) => {
+      if (x < y) {
         return 1;
-      } else if (el1 > el2) {
+      } else if (x > y) {
         return -1;
       } else {
         return 0;
@@ -102,11 +107,11 @@ describe('BinaryMinHeap', () => {
       const testHeap2 = new BinaryMinHeap();
       [7, 5, 6, 4].forEach(int => testHeap2.push(int));
 
-      expect(heap.extract()).toEqual(4);
-      expect(heap.store).toEqual([5, 7, 6]);
+      expect(testHeap2.extract()).toEqual(4);
+      expect(testHeap2.store).toEqual([5, 7, 6]);
 
-      expect(heap.extract()).toEqual(5);
-      expect(heap.store).toEqual([6, 7]);
+      expect(testHeap2.extract()).toEqual(5);
+      expect(testHeap2.store).toEqual([6, 7]);
     });
   });
 });
