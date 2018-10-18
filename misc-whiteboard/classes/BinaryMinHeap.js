@@ -2,7 +2,7 @@ class BinaryMinHeap {
   // Your code here
 
   toString() {
-    return ``;
+    return `${this.store}`;
   }
 }
 module.exports = BinaryMinHeap;
