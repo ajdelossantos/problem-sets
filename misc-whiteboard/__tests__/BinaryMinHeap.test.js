@@ -8,7 +8,7 @@ describe('BinaryMinHeap', () => {
       expect(BinaryMinHeap.childIndices(6, 2)).toEqual([5]);
     });
 
-    test.skip('calculates parent indices correctly', () => {
+    test('calculates parent indices correctly', () => {
       expect(BinaryMinHeap.parentIndex(5)).toEqual(2);
       expect(BinaryMinHeap.parentIndex(4)).toEqual(1);
       expect(BinaryMinHeap.parentIndex(3)).toEqual(1);
@@ -19,7 +19,7 @@ describe('BinaryMinHeap', () => {
   });
 
   describe('heapify up and down', () => {
-    test.skip('heapifyDown works correctly', () => {
+    test('heapifyDown works correctly', () => {
       const test1 = [7, 4, 5];
       const result1 = [4, 7, 5];
 
@@ -30,7 +30,7 @@ describe('BinaryMinHeap', () => {
       expect(BinaryMinHeap.heapifyDown(test2, 0)).toEqual(result2);
     });
 
-    test.skip('heapifyUp works correctly', () => {
+    test('heapifyUp works correctly', () => {
       const test3 = [4, 5, 1];
       const result3 = [1, 5, 4];
 
@@ -52,16 +52,61 @@ describe('BinaryMinHeap', () => {
       }
     };
 
-    test.skip('heapifyDown with callback works correctly', () => {});
+    test('heapifyDown with callback works correctly', () => {
+      const test5 = [1, 2, 3];
+      const result5 = [3, 2, 1];
 
-    test.skip('heapifyUp with callback works correctly', () => {});
+      const test6 = [1, 5, 4, 3];
+      const result6 = [5, 3, 4, 1];
+
+      expect(BinaryMinHeap.heapifyDown(test5, 0, toMaxHeap)).toEqual(result5);
+      expect(BinaryMinHeap.heapifyDown(test6, 0, toMaxHeap)).toEqual(result6);
+    });
+
+    test('heapifyUp with callback works correctly', () => {
+      const test7 = [2, 1, 3];
+      const result7 = [3, 1, 2];
+
+      const test8 = [4, 3, 1, 5];
+      const result8 = [5, 4, 1, 3];
+
+      expect(BinaryMinHeap.heapifyUp(test7, 2, toMaxHeap)).toEqual(result7);
+      expect(BinaryMinHeap.heapifyUp(test8, 3, toMaxHeap)).toEqual(result8);
+    });
   });
 
   describe('heap operation', () => {
-    test.skip('has a store that start empty', () => {});
+    test('has a store that starts empty', () => {
+      const testHeap0 = new BinaryMinHeap();
 
-    test.skip('pushes correctly', () => {});
+      expect(testHeap0.store).toEqual([]);
+    });
 
-    test.skip('extracts correctly', () => {});
+    test('pushes correctly', () => {
+      const testHeap1 = new BinaryMinHeap();
+
+      testHeap1.push(7);
+      expect(testHeap1.store).toEqual([7]);
+
+      testHeap1.push(5);
+      expect(testHeap1.store).toEqual([5, 7]);
+
+      testHeap1.push(6);
+      expect(testHeap1.store).toEqual([5, 7, 6]);
+
+      testHeap1.push(4);
+      expect(testHeap1.store).toEqual([4, 5, 6, 7]);
+    });
+
+    test('extracts correctly', () => {
+      const testHeap2 = new BinaryMinHeap();
+      [7, 5, 6, 4].forEach(int => testHeap2.push(int));
+
+      expect(heap.extract()).toEqual(4);
+      expect(heap.store).toEqual([5, 7, 6]);
+
+      expect(heap.extract()).toEqual(5);
+      expect(heap.store).toEqual([6, 7]);
+    });
   });
 });
