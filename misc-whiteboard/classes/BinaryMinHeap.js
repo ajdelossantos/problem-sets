@@ -11,39 +11,52 @@ class BinaryMinHeap {
     this.comparisonFunction = comparisonFunction;
   }
 
+  // O(1)
   count() {
     return this.store.length;
   }
 
+  // O(1)
   peek() {
     return this.store[0];
   }
 
+  // O(log n)
   push(int) {
+    // First, push the new value into the store
     this.store.push(int);
 
+    // Restore the heap property, starting from the new leaf node and bubbling up
     BinaryMinHeap.heapifyUp({
       inputArray: this.store,
       childIndex: this.count() - 1,
       comparisonFunction: this.comparisonFunction
     });
 
+    // Finally, return the store
     return this.store;
   }
 
+  // O(log n)
+  // We want to extract the first element! So...
   extract() {
+    // First, swap the first and last element of the store
     [this.store[0], this.store[this.count() - 1]] = [
       this.store[this.count() - 1],
       this.store[0]
     ];
+
+    // Next, pop off the element we want
     const extractedElement = this.store.pop();
 
+    // Restore the heap property, starting from the new root node and bubbling down
     BinaryMinHeap.heapifyDown({
       inputArray: this.store,
       parentIndex: 0,
       comparisonFunction: this.comparisonFunction
     });
 
+    // Finally, return the extracted element
     return extractedElement;
   }
 
@@ -59,7 +72,7 @@ class BinaryMinHeap {
   }
 
   /*==================================================
-  See modules for implementation of class methods 
+    See modules for implementation of class methods
   ==================================================*/
 
   static childIndices(length, index) {

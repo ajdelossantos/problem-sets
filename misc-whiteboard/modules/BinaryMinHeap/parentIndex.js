@@ -1,12 +1,11 @@
+// Class-agnostic function that returns a parent index for any given child node in a Binary heap
 const parentIndex = index => {
   if (index === 0) {
+    // First, throw an error if we reach the root node
     throw new RangeError('root has no parent');
-  } else if (index % 2 === 0) {
-    return index / 2 - 1;
-  } else if (index % 2 === 1) {
-    return (index - 1) / 2;
   } else {
-    throw new Error('unexpected input');
+    // Inverse operation of calculating children. For zero-indexed arrays, adjust for the off-by-one error.
+    return Math.floor((index - 1) / 2);
   }
 };
 
