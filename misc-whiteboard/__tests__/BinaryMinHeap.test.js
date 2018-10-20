@@ -31,8 +31,12 @@ describe('BinaryMinHeap', () => {
       const test2 = [7, 4, 5, 6, 8];
       const result2 = [4, 6, 5, 7, 8];
 
-      expect(BinaryMinHeap.heapifyDown(test1, 0)).toEqual(result1);
-      expect(BinaryMinHeap.heapifyDown(test2, 0)).toEqual(result2);
+      expect(
+        BinaryMinHeap.heapifyDown({ inputArray: test1, parentIndex: 0 })
+      ).toEqual(result1);
+      expect(
+        BinaryMinHeap.heapifyDown({ inputArray: test2, parentIndex: 0 })
+      ).toEqual(result2);
     });
 
     test('heapifyUp works correctly', () => {
@@ -42,8 +46,12 @@ describe('BinaryMinHeap', () => {
       const test4 = [3, 4, 5, 1];
       const result4 = [1, 3, 5, 4];
 
-      expect(BinaryMinHeap.heapifyUp(test3, 2)).toEqual(result3);
-      expect(BinaryMinHeap.heapifyUp(test4, 3)).toEqual(result4);
+      expect(
+        BinaryMinHeap.heapifyUp({ inputArray: test3, childIndex: 2 })
+      ).toEqual(result3);
+      expect(
+        BinaryMinHeap.heapifyUp({ inputArray: test4, childIndex: 3 })
+      ).toEqual(result4);
     });
 
     // Callback function passed to heapify turns MinHeap into MaxHeap
@@ -64,8 +72,20 @@ describe('BinaryMinHeap', () => {
       const test6 = [1, 5, 4, 3];
       const result6 = [5, 3, 4, 1];
 
-      expect(BinaryMinHeap.heapifyDown(test5, 0, toMaxHeap)).toEqual(result5);
-      expect(BinaryMinHeap.heapifyDown(test6, 0, toMaxHeap)).toEqual(result6);
+      expect(
+        BinaryMinHeap.heapifyDown({
+          inputArray: test5,
+          parentIndex: 0,
+          comparisonFunction: toMaxHeap
+        })
+      ).toEqual(result5);
+      expect(
+        BinaryMinHeap.heapifyDown({
+          inputArray: test6,
+          parentIndex: 0,
+          comparisonFunction: toMaxHeap
+        })
+      ).toEqual(result6);
     });
 
     test('heapifyUp with callback works correctly', () => {
@@ -75,8 +95,20 @@ describe('BinaryMinHeap', () => {
       const test8 = [4, 3, 1, 5];
       const result8 = [5, 4, 1, 3];
 
-      expect(BinaryMinHeap.heapifyUp(test7, 2, toMaxHeap)).toEqual(result7);
-      expect(BinaryMinHeap.heapifyUp(test8, 3, toMaxHeap)).toEqual(result8);
+      expect(
+        BinaryMinHeap.heapifyUp({
+          inputArray: test7,
+          childIndex: 2,
+          comparisonFunction: toMaxHeap
+        })
+      ).toEqual(result7);
+      expect(
+        BinaryMinHeap.heapifyUp({
+          inputArray: test8,
+          childIndex: 3,
+          comparisonFunction: toMaxHeap
+        })
+      ).toEqual(result8);
     });
   });
 
