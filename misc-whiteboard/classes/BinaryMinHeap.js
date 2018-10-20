@@ -1,5 +1,5 @@
 // Callback for ascendingHeapSort
-const defaultSort = (x, y) => {
+const ascendingComparator = (x, y) => {
   if (x < y) {
     return -1;
   } else if (x > y) {
@@ -12,10 +12,10 @@ const defaultSort = (x, y) => {
 class BinaryMinHeap {
   // Your code here
 
-  constructor(sortCallback = defaultSort) {
+  constructor(comparisonFunction = ascendingComparator) {
     this.store = [];
     this.count = this.count.bind(this);
-    this.sortCallback = sortCallback;
+    this.comparisonFunction = comparisonFunction;
   }
 
   count() {
@@ -28,7 +28,11 @@ class BinaryMinHeap {
 
   push(int) {
     this.store.push(int);
-    BinaryMinHeap.heapifyUp(this.store, this.count - 1, this.sortCallback);
+    BinaryMinHeap.heapifyUp(
+      this.store,
+      this.count() - 1,
+      this.comparisonFunction
+    );
   }
 
   extract() {
@@ -37,7 +41,11 @@ class BinaryMinHeap {
       this.store[0]
     ];
     const extractedElement = this.store.pop();
-    BinaryMinHeap.heapifyDown(this.store, this.count - 1, this.sortCallback);
+    BinaryMinHeap.heapifyDown(
+      this.store,
+      this.count - 1,
+      this.comparisonFunction
+    );
 
     return extractedElement;
   }
@@ -67,18 +75,37 @@ class BinaryMinHeap {
 
   static heapifyUp(
     inputArray,
-    parentIndex,
-    length = inputArray.length,
-    sortCallback
+    childIndex,
+    comparisonFunction = ascendingComparator
   ) {
-    // Code goes here
+    let isHeap = false;
+    let currentIndex = childIndex;
+    let currentNode = inputArray[currentIndex];
+
+    while (!isHeap && currentIndex !== 0) {
+      const currentParentIndex = BinaryMinHeap.parentIndex(currentIndex);
+      const currentParent = inputArray[currentParentIndex];
+
+      if (comparisonFunction(currentNode, currentParent) < 0) {
+        [inputArray[currentParentIndex], inputArray[currentIndex]] = [
+          inputArray[currentIndex],
+          inputArray[currentParentIndex]
+        ];
+
+        currentIndex = currentParentIndex;
+        currentNode = inputArray[currentIndex];
+      } else {
+        isHeap = true;
+      }
+    }
+    return inputArray;
   }
 
   static heapifyDown(
     inputArray,
     parentIndex,
     length = inputArray.length,
-    sortCallback
+    comparisonFunction
   ) {
     // Code goes here
   }

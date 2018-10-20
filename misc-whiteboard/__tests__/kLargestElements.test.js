@@ -43,13 +43,13 @@ const generateRandomArray = () => {
 
 describe('kLargestElements', () => {
   test('returns the correct set of elements', () => {
-    // const test1 = shuffle([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-    // const result1 = [9, 8, 7, 6];
+    const test1 = shuffle([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    const result1 = [9, 8, 7, 6];
 
     const test2 = generateRandomArray();
     const result2 = test2.sort((a, b) => b - a).slice(0, 10);
 
-    // expect(kLargestElements(test1, 4)).toEqual(result1);
+    expect(kLargestElements(test1, 4)).toEqual(result1);
     expect(kLargestElements(test2, 10)).toEqual(result2);
   });
 });
