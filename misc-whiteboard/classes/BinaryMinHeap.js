@@ -10,8 +10,6 @@ const ascendingComparator = (x, y) => {
 };
 
 class BinaryMinHeap {
-  // Your code here
-
   constructor(comparisonFunction = ascendingComparator) {
     this.store = [];
     this.count = this.count.bind(this);
@@ -30,9 +28,11 @@ class BinaryMinHeap {
     this.store.push(int);
     BinaryMinHeap.heapifyUp(
       this.store,
-      this.count() - 1,
+      this.store.length - 1,
       this.comparisonFunction
     );
+
+    return this.store;
   }
 
   extract() {
@@ -41,11 +41,8 @@ class BinaryMinHeap {
       this.store[0]
     ];
     const extractedElement = this.store.pop();
-    BinaryMinHeap.heapifyDown(
-      this.store,
-      this.count - 1,
-      this.comparisonFunction
-    );
+
+    BinaryMinHeap.heapifyDown(this.store, 0, this.comparisonFunction);
 
     return extractedElement;
   }
@@ -104,16 +101,57 @@ class BinaryMinHeap {
   static heapifyDown(
     inputArray,
     parentIndex,
-    length = inputArray.length,
-    comparisonFunction
+    comparisonFunction = ascendingComparator,
+    length = inputArray.length
   ) {
-    // Code goes here
+    let isHeap = false;
+    let currentIndex = parentIndex;
+    let currentNode = inputArray[currentIndex];
+    let currentChildIndices = BinaryMinHeap.childIndices(length, currentIndex);
+
+    while (!isHeap) {
+      const currentChildren = currentChildIndices.map(
+        index => inputArray[index]
+      );
+
+      let leftChildIndex, rightChildIndex, leftChild, rightChild;
+      [leftChildIndex, rightChildIndex] = currentChildIndices;
+      [leftChild, rightChild] = currentChildren;
+
+      if (
+        comparisonFunction(currentNode, leftChild) > 0 ||
+        comparisonFunction(currentNode, rightChild) > 0
+      ) {
+        let swapIndex;
+
+        if (comparisonFunction(leftChild, rightChild) < 0 || !rightChild) {
+          swapIndex = leftChildIndex;
+        } else {
+          swapIndex = rightChildIndex;
+        }
+
+        [inputArray[currentIndex], inputArray[swapIndex]] = [
+          inputArray[swapIndex],
+          inputArray[currentIndex]
+        ];
+
+        currentIndex = swapIndex;
+        currentNode = inputArray[currentIndex];
+        currentChildIndices = BinaryMinHeap.childIndices(length, currentIndex);
+      } else {
+        isHeap = true;
+      }
+    }
+
+    return inputArray;
   }
 
   toString() {
     return `
       BinaryMinHeap { 
-        store: [${this.store}],
+        store: [${this.store.map(
+          (el, idx) => (idx === 0 ? `${el}` : ` ${el}`)
+        )}],
         length: ${this.count()}
       }
     `;
