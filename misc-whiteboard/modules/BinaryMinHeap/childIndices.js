@@ -5,7 +5,7 @@ const childIndices = (length, index) => {
   const right = index * 2 + 2;
   const result = [];
 
-  // For safety, check to see if the indices are in range so we don't pass in undefined
+  // For safety, check to see if the indices are in range so we don't pass in 'undefined'
   if (left < length) result.push(left);
   if (right < length) result.push(right);
 
