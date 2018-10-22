@@ -24,6 +24,9 @@ describe('BinaryMinHeap', () => {
   });
 
   describe('heapify up and down', () => {
+    console.log(
+      'Remember! heapifyUp and heapifyDown take an object for arguments!'
+    );
     test('heapifyDown works correctly', () => {
       const test1 = [7, 4, 5];
       const result1 = [4, 7, 5];
@@ -55,7 +58,7 @@ describe('BinaryMinHeap', () => {
     });
 
     // Callback function passed to heapify turns MinHeap into MaxHeap
-    const toMaxHeap = (x, y) => {
+    const ascendingComparator = (x, y) => {
       if (x < y) {
         return 1;
       } else if (x > y) {
@@ -76,14 +79,14 @@ describe('BinaryMinHeap', () => {
         BinaryMinHeap.heapifyDown({
           inputArray: test5,
           parentIndex: 0,
-          comparisonFunction: toMaxHeap
+          comparisonFunction: ascendingComparator
         })
       ).toEqual(result5);
       expect(
         BinaryMinHeap.heapifyDown({
           inputArray: test6,
           parentIndex: 0,
-          comparisonFunction: toMaxHeap
+          comparisonFunction: ascendingComparator
         })
       ).toEqual(result6);
     });
@@ -99,14 +102,14 @@ describe('BinaryMinHeap', () => {
         BinaryMinHeap.heapifyUp({
           inputArray: test7,
           childIndex: 2,
-          comparisonFunction: toMaxHeap
+          comparisonFunction: ascendingComparator
         })
       ).toEqual(result7);
       expect(
         BinaryMinHeap.heapifyUp({
           inputArray: test8,
           childIndex: 3,
-          comparisonFunction: toMaxHeap
+          comparisonFunction: ascendingComparator
         })
       ).toEqual(result8);
     });
