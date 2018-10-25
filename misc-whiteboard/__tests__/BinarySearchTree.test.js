@@ -8,9 +8,27 @@ describe('BinarySearchTree', () => {
     testBST.insert(el);
   });
 
-  let testBST = sampleBST;
+  let preFilledTestBST = sampleBST;
+  let emptyTestBST = new BinarySearchTree();
 
   afterEach(() => {
     testBST = sampleBST;
+    emptyTestBST = new BinarySearchTree();
+  });
+
+  describe('#constructor', () => {
+    test('should seet root to null', () => {
+      expect(emptyTestBST.root).toBeNull();
+    });
+  });
+
+  describe('#insert', () => {
+    test.skip('should insert values in the correct order', () => {});
+  });
+
+  describe('#find', () => {
+    test.skip('should return null if the value is not in the BST', () => {
+      // TODO
+    });
   });
 });
