@@ -12,7 +12,7 @@ describe('BinarySearchTree', () => {
   let testBST = new BinarySearchTree();
 
   afterEach(() => {
-    testBST = sampleBST;
+    preFilledTestBST = sampleBST;
     testBST = new BinarySearchTree();
   });
 
@@ -22,7 +22,7 @@ describe('BinarySearchTree', () => {
     });
   });
 
-  describe('#insert', () => {
+  describe.only('#insert', () => {
     test('should insert values in the correct order', () => {
       testBST.insert(5);
       expect(testBST.root.value).toEqual(5);
@@ -38,18 +38,18 @@ describe('BinarySearchTree', () => {
 
       expect(intermediateRoot.left.value).toEqual(1);
 
-      expect(testBST.root.value).toEqual(5);
-      expect(testBST.root.left.value).toEqual(3);
-      expect(testBST.root.left.left.value).toEqual(1);
-      expect(testBST.root.left.left.left.value).toEqual(0);
-      expect(testBST.root.left.left.right.value).toEqual(2);
-      expect(testBST.root.left.left.right.left.value).toEqual(1.5);
-      expect(testBST.root.left.right.value).toEqual(4);
-      expect(testBST.root.left.right.right).toEqual(null);
-      expect(testBST.root.right.value).toEqual(7);
-      expect(testBST.root.right.left).toEqual(null);
-      expect(testBST.root.right.right.value).toEqual(9);
-      expect(testBST.root.right.right.right.value).toEqual(10);
+      expect(preFilledTestBST.root.value).toEqual(5);
+      expect(preFilledTestBST.root.left.value).toEqual(3);
+      expect(preFilledTestBST.root.left.left.value).toEqual(1);
+      expect(preFilledTestBST.root.left.left.left.value).toEqual(0);
+      expect(preFilledTestBST.root.left.left.right.value).toEqual(2);
+      expect(preFilledTestBST.root.left.left.right.left.value).toEqual(1.5);
+      expect(preFilledTestBST.root.left.right.value).toEqual(4);
+      expect(preFilledTestBST.root.left.right.right).toEqual(null);
+      expect(preFilledTestBST.root.right.value).toEqual(7);
+      expect(preFilledTestBST.root.right.left).toEqual(null);
+      expect(preFilledTestBST.root.right.right.value).toEqual(9);
+      expect(preFilledTestBST.root.right.right.right.value).toEqual(10);
     });
   });
 
