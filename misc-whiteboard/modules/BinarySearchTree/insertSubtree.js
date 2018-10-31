@@ -1,25 +1,42 @@
 const TreeNode = require('../../classes/tree.node');
 
-// TODO this is broken...
-function insertLeftSubtree(treeNode, newNode) {
-  if (!treeNode) {
-    treeNode = newNode;
-    console.log(treeNode);
-  } else if (!treeNode.left && newNode.value < treeNode.value) {
-    treeNode.left = newNode;
+// Recursive implementation
+function insertSubtree(currentNode, newNode) {
+  if (newNode.value < currentNode.value) {
+    if (!currentNode.left) {
+      currentNode.left = newNode;
+      return;
+    } else {
+      insertSubtree(currentNode.left, newNode);
+    }
   } else {
-    insertLeftSubtree(treeNode.left, newNode);
+    if (!currentNode.right) {
+      currentNode.right = newNode;
+      return;
+    } else {
+      insertSubtree(currentNode.right, newNode);
+    }
+  }
+}
+// Iterative implementation
+function insertSubtreeIterative(currentNode, newNode) {
+  while (currentNode) {
+    if (newNode.value < currentNode.value) {
+      if (!currentNode.left) {
+        currentNode.left = newNode;
+        return;
+      } else {
+        currentNode = currentNode.left;
+      }
+    } else {
+      if (!currentNode.right) {
+        currentNode.right = newNode;
+        return;
+      } else {
+        currentNode = currentNode.right;
+      }
+    }
   }
 }
 
-function insertRightSubtree(treeNode, newNode) {
-  if (!treeNode) {
-    treeNode = newNode;
-  } else if (!treeNode.right && newNode.value >= treeNode.value) {
-    treeNode.right = newNode;
-  } else {
-    insertLeftSubtree(treeNode.right, newNode);
-  }
-}
-
-module.exports = { insertLeftSubtree, insertRightSubtree };
+module.exports = insertSubtree;

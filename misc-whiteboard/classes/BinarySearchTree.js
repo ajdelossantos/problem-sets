@@ -1,8 +1,5 @@
 const TreeNode = require('./tree.node');
-const {
-  insertLeftSubtree,
-  insertRightSubtree
-} = require('../modules/BinarySearchTree/insertSubtree');
+const insertSubtree = require('../modules/BinarySearchTree/insertSubtree');
 
 class BinarySearchTree {
   constructor() {
@@ -14,13 +11,11 @@ class BinarySearchTree {
 
     if (!this.root) {
       this.root = newNode;
-    } else if (newNode.value < this.root.value) {
-      insertLeftSubtree(this.root.left, newNode);
-    } else if (newNode.value >= this.root.value) {
-      insertRightSubtree(this.root.right, newNode);
+      return;
     }
 
-    return false;
+    let currentNode = this.root;
+    return insertSubtree(currentNode, newNode);
   }
 
   find() {
