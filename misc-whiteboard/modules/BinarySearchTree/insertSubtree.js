@@ -19,7 +19,7 @@ function insertSubtree(currentNode, newNode) {
   }
 }
 // Iterative implementation
-function insertSubtreeIterative(currentNode, newNode) {
+function _insertSubtree(currentNode, newNode) {
   while (currentNode) {
     if (newNode.value < currentNode.value) {
       if (!currentNode.left) {

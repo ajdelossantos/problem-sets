@@ -19,7 +19,7 @@ class BinarySearchTree {
   }
 
   find() {
-    return false;
+    return null;
   }
 
   delete() {

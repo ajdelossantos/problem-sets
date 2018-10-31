@@ -22,7 +22,7 @@ describe('BinarySearchTree', () => {
     });
   });
 
-  describe.only('#insert', () => {
+  describe('#insert', () => {
     test('should insert values in the correct order', () => {
       testBST.insert(5);
       expect(testBST.root.value).toEqual(5);
@@ -53,13 +53,16 @@ describe('BinarySearchTree', () => {
     });
   });
 
-  describe('#find', () => {
-    test.skip('should return null if the value is not in the BST', () => {
-      // TODO
+  describe.only('#find', () => {
+    test('should return null if the value is not in the BST', () => {
+      expect(preFilledTestBST.find(-5)).toBeNull();
     });
 
-    test.skip('should return the correct node if the value is in the BST', () => {
-      // TODO
+    test('should return the correct node if the value is in the BST', () => {
+      const foundNode = preFilledTestBST.find(4);
+
+      expect(typeof foundNode).toBeInstanceOf(TreeNode);
+      expect(foundNode.value).toEqual(4);
     });
   });
 
