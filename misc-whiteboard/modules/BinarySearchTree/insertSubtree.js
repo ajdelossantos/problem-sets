@@ -1,5 +1,3 @@
-const TreeNode = require('../../classes/tree.node');
-
 // Recursive implementation
 function insertSubtree(currentNode, newNode) {
   if (newNode.value < currentNode.value) {

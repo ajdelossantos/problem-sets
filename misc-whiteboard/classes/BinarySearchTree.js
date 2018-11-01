@@ -1,11 +1,13 @@
 const TreeNode = require('./tree.node');
 const insertSubtree = require('../modules/BinarySearchTree/insertSubtree');
+const depthFirstSearch = require('../modules/BinarySearchTree/depthFirstSearch');
 
 class BinarySearchTree {
   constructor() {
     this.root = null;
   }
 
+  // O(log(n))
   insert(value) {
     const newNode = new TreeNode(value);
 
@@ -14,12 +16,13 @@ class BinarySearchTree {
       return;
     }
 
-    let currentNode = this.root;
-    return insertSubtree(currentNode, newNode);
+    return insertSubtree(this.root, newNode);
   }
 
-  find() {
-    return null;
+  // O(log(n)), depth first search
+  find(value) {
+    if (!this.root) return null;
+    return depthFirstSearch(this.root, value);
   }
 
   delete() {

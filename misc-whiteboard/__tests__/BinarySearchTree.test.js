@@ -1,4 +1,5 @@
 const BinarySearchTree = require('../classes/BinarySearchTree');
+const TreeNode = require('../classes/tree.node');
 
 describe('BinarySearchTree', () => {
   // Setup
@@ -61,7 +62,7 @@ describe('BinarySearchTree', () => {
     test('should return the correct node if the value is in the BST', () => {
       const foundNode = preFilledTestBST.find(4);
 
-      expect(typeof foundNode).toBeInstanceOf(TreeNode);
+      expect(foundNode).toBeInstanceOf(TreeNode);
       expect(foundNode.value).toEqual(4);
     });
   });
